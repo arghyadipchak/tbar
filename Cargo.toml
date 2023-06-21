@@ -1,6 +1,6 @@
 [package]
 name = "tbar"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Arghyadip Chakraborty <arghyadip.chak16@gmail.com>"]
 edition = "2021"
 license = "MIT"
@@ -9,8 +9,8 @@ license = "MIT"
 colored = "2.0.0"
 ansi_term = "0.12.1"
 unicode-width = "0.1.10"
-zellij-tile = "0.37.0"
-zellij-tile-utils = "0.37.0"
+zellij-tile = "0.37.2"
+zellij-tile-utils = "0.37.2"
 
 [profile.release]
 codegen-units = 1
