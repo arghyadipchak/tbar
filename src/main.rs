@@ -1,7 +1,10 @@
 mod line;
 mod tab;
 
-use std::cmp::{max, min};
+use std::{
+  cmp::{max, min},
+  collections::BTreeMap,
+};
 
 use zellij_tile::prelude::*;
 
@@ -28,17 +31,25 @@ register_plugin!(State);
 const ARROW_SEPARATOR: &str = "";
 
 impl ZellijPlugin for State {
-  fn load(&mut self) {
-    set_selectable(false);
+  fn load(&mut self, _configuration: BTreeMap<String, String>) {
+    request_permission(&[
+      PermissionType::ReadApplicationState,
+      PermissionType::ChangeApplicationState,
+    ]);
     subscribe(&[
-      EventType::TabUpdate,
+      EventType::PermissionRequestResult,
       EventType::ModeUpdate,
+      EventType::TabUpdate,
       EventType::Mouse,
     ]);
   }
 
   fn update(&mut self, event: Event) -> bool {
     match event {
+      Event::PermissionRequestResult(_) => {
+        set_selectable(false);
+        true
+      }
       Event::ModeUpdate(mode_info) => {
         if self.mode_info == mode_info {
           false
