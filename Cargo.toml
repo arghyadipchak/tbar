@@ -6,11 +6,11 @@ edition = "2021"
 license = "MIT"
 
 [dependencies]
-colored = "2.0.4"
+colored = "2.1.0"
 ansi_term = "0.12.1"
-unicode-width = "0.1.10"
-zellij-tile = "0.38.0"
-zellij-tile-utils = "0.38.0"
+unicode-width = "0.1.13"
+zellij-tile = "0.40.1"
+zellij-tile-utils = "0.40.1"
 
 [profile.release]
 codegen-units = 1
